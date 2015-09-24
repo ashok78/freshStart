@@ -14,7 +14,8 @@ int main(int argc, char *argv[]) {
 
   intVector arr;
 
-  int size = std::rand()%20;
+  std:srand(std::time(0));
+  int size = std::rand()%200;
 
   int val;
   for (int i=0; i < size ; i++) {
@@ -54,8 +55,7 @@ void merge(intVector &arr, int low, int mid, int high) {
   int leftSize  = left.size();
   int rightSize = right.size();
 
-  while(fi<=high) {
-    if(li < leftSize && ri < rightSize) {
+  while(li < leftSize && ri < rightSize) {
       if(left[li] > right[ri]) {
         arr[fi] = right[ri];
         ri++;
@@ -65,23 +65,15 @@ void merge(intVector &arr, int low, int mid, int high) {
         li++;
       }
       fi++;
-    }
-    else {
-      if(li < leftSize) {
-         while(li < leftSize) {
-            arr[fi++] = left[li++];
-         }
-      }
-      else if(ri < rightSize) {
-         while(ri < rightSize) {
-            arr[fi++] = right[ri++];
-         }
-      }
-      else{
-        break;
-      }
-    }
-  }
+ }
+
+ while(li < leftSize) {
+  arr[fi++] = left[li++];
+ }
+         
+ while(ri < rightSize) {
+  arr[fi++] = right[ri++];
+ }
 }
 
 void add(intVector &vec, int num) {
