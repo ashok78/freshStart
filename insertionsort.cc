@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 typedef std::vector<int> intVector;
 
 void print(const intVector &vec);
